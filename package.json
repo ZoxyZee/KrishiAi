@@ -26,6 +26,7 @@
     "expo-status-bar": "~3.0.7",
     "expo-symbols": "~1.0.6",
     "expo-web-browser": "~15.0.6",
+    "lucide-react-native": "^0.543.0",
     "nativewind": "^4.1.23",
     "prettier-plugin-tailwindcss": "^0.5.14",
     "react": "19.1.0",

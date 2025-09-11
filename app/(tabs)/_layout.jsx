@@ -5,9 +5,9 @@ export default function Layout() {
   return (
     <Tabs
       screenOptions={{
-        headerShown: false,        // hide top header
-        tabBarActiveTintColor: "#007AFF",  // active color
-        tabBarInactiveTintColor: "gray",  // inactive color
+        headerShown: false, // hide top header
+        tabBarActiveTintColor: "#007AFF", // active color
+        tabBarInactiveTintColor: "gray", // inactive color
         tabBarStyle: { backgroundColor: "#fff", paddingBottom: 5 },
       }}
     >
@@ -29,6 +29,7 @@ export default function Layout() {
           ),
         }}
       />
+
       <Tabs.Screen
         name="about"
         options={{
@@ -36,6 +37,13 @@ export default function Layout() {
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="information-circle" size={size} color={color} />
           ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="Log Activity"
+        options={{
+          href: null,
         }}
       />
     </Tabs>
