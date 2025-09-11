@@ -1,12 +1,52 @@
-import { Stack } from "expo-router";
+import { Tabs } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function Layout() {
   return (
-    <Stack>
-      <Stack.Screen name="index" options={{ title: "Home" }} />
-      <Stack.Screen name="login" options={{ title: "Login" }} />
-      <Stack.Screen name="about" options={{ title: "About" }} />
-      <Stack.Screen name="profile" options={{ title: "Profile" }} />
-    </Stack>
+    <Tabs
+      screenOptions={{
+        headerShown: false,        // hide top header
+        tabBarActiveTintColor: "#007AFF",  // active color
+        tabBarInactiveTintColor: "gray",  // inactive color
+        tabBarStyle: { backgroundColor: "#fff", paddingBottom: 5 },
+      }}
+    >
+      <Tabs.Screen
+        name="index"
+        options={{
+          title: "Home",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="home" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="login"
+        options={{
+          title: "Login",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="log-in" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="about"
+        options={{
+          title: "About",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="information-circle" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: "Profile",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="person" size={size} color={color} />
+          ),
+        }}
+      />
+    </Tabs>
   );
 }
