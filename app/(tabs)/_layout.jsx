@@ -21,29 +21,39 @@ export default function Layout() {
         }}
       />
       <Tabs.Screen
-        name="login"
+        name="cropcal"
         options={{
-          title: "Login",
+          title: "Crop Calander",
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="log-in" size={size} color={color} />
+            <Ionicons name="calendar" size={size} color={color} />
           ),
         }}
       />
-
       <Tabs.Screen
-        name="about"
+        name="camera"
         options={{
-          title: "About",
+          title: "Camera",
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="information-circle" size={size} color={color} />
+            <Ionicons name="camera" size={size} color={color} />
           ),
         }}
       />
-
       <Tabs.Screen
-        name="Log Activity"
+        name="logactivity"
         options={{
-          href: null,
+          title: "Log Activity",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="add" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="marketprice"
+        options={{
+          title: "Market Price",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="analytics" size={size} color={color} />
+          ),
         }}
       />
     </Tabs>
