@@ -340,7 +340,7 @@ const LoginRegisterScreen = () => {
       const data = await response.data.data;
       console.log(data)
       
-      if (response.ok) {
+      if (response.status === 200) {
         // Store token if needed
         // await AsyncStorage.setItem('token', data.token);
         router.replace("/(tabs)");
@@ -368,6 +368,7 @@ const LoginRegisterScreen = () => {
 
     setLoading(true);
     try {
+      console.log(fullName, phoneNumber, password)
       // const response = await fetch('http://your-server-url/api/auth/register', {
       //   method: 'POST',
       //   headers: {
@@ -385,7 +386,7 @@ const LoginRegisterScreen = () => {
       const data = await response.data.data;
       console.log(data)
       
-      if (response.ok) {
+      if (response.status === 200) {
         Alert.alert('Success', 'Registration successful! Please login.', [
           { text: 'OK', onPress: () => setActiveTab('Login') }
         ]);
