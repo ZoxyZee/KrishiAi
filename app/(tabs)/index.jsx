@@ -27,6 +27,7 @@ import {
   StatusBar,
 } from 'react-native';
 import Svg, { Circle } from 'react-native-svg';
+import WeatherCard from "../components/WeatherCard";
 
 const { width } = Dimensions.get('window');
 
@@ -164,7 +165,7 @@ const FarmDashboard = () => {
 
         {/* Current Weather */}
         <View style={styles.weatherContainer}>
-          <View style={styles.weatherCard}>
+          {/* <View style={styles.weatherCard}>
             <View style={styles.weatherHeader}>
               <Text style={styles.sectionTitle}>Current Weather</Text>
               <TouchableOpacity>
@@ -189,7 +190,8 @@ const FarmDashboard = () => {
                 <Text style={styles.conditionText}>{currentWeather.condition}</Text>
               </View>
             </View>
-          </View>
+          </View> */}
+          <WeatherCard />
         </View>
 
         {/* Recommendations */}
