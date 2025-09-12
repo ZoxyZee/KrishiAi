@@ -8,6 +8,7 @@ import {
   ScrollView,
   Dimensions,
   StatusBar,
+  Linking,
 } from "react-native";
 import Svg, { Circle } from "react-native-svg";
 import WeatherCard from "../components/WeatherCard";
@@ -124,11 +125,18 @@ const FarmDashboard = () => {
           <View style={styles.schemeContent}>
             <View>
               <Text style={styles.schemeTitle}>GOVT. SCHEMES</Text>
-              <Text style={styles.schemeSubtitle}>Check Now</Text>
+              <TouchableOpacity
+                onPress={() =>
+                  Linking.openURL(
+                    "https://www.sfackerala.org/service/karshika-vivara-sanketham-oruviralthumpil-agriculture-information-hub-at-your-fingertips/"
+                  )
+                }
+              >
+                <Text style={styles.schemeSubtitle}>Check Now</Text>
+              </TouchableOpacity>
             </View>
             <Text style={styles.schemeArrow}>▶</Text>
           </View>
-          
         </TouchableOpacity>
 
         {/* Current Weather */}
