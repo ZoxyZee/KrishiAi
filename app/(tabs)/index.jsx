@@ -100,7 +100,7 @@ const FarmDashboard = () => {
           <View style={styles.headerContent}>
             <View style={styles.greetingContainer}>
               <Text style={styles.greeting}>
-                Namaskaram, <Text style={styles.nameHighlight}>Rajan!</Text> 👋
+                Namaaskaram, <Text style={styles.nameHighlight}>Rajan!</Text> 👋
               </Text>
               <Text style={styles.subGreeting}>
                 Here's today's update for your farm
@@ -295,7 +295,7 @@ const styles = StyleSheet.create({
   floatingButtonsContainer: {
     position: "absolute",
     bottom: 20,
-    right: 20,
+    right: 30,
     alignItems: "center",
   },
 });
