@@ -157,17 +157,18 @@ export default AgriMarketInterface;
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#f0fdf4", padding: 16 },
   header: {
+    marginTop: 30,
     backgroundColor: "#16a34a",
     padding: 16,
     borderRadius: 12,
     flexDirection: "row",
     justifyContent: "space-between",
   },
-  headerTitle: { fontSize: 20, fontWeight: "bold", color: "white" },
+  headerTitle: { fontSize: 24, fontWeight: "bold", color: "white" },
   headerSubtitle: { fontSize: 12, color: "white" },
   infoBox: {
     backgroundColor: "white",
-    marginTop: 12,
+    marginTop: 25,
     padding: 12,
     borderRadius: 10,
     elevation: 2,

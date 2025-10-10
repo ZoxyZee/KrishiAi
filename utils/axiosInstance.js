@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://192.168.29.92:8080/api", // use local IP if testing on real device
+  baseURL: "http://10.146.33.211:8080/api", // use local IP if testing on real device
   withCredentials: true,
   timeout: 10000,
   headers: {

@@ -17,7 +17,9 @@ const LogFarmActivity = () => {
   const navigation = useNavigation();
   const [selectedActivity, setSelectedActivity] = useState(null);
   const [selectedCrop, setSelectedCrop] = useState("Select Crop");
-  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+  const [selectedField, setSelectedField] = useState("Select Field");
+  const [isCropDropdownVisible, setIsCropDropdownVisible] = useState(false);
+  const [isFieldDropdownVisible, setIsFieldDropdownVisible] = useState(false);
   const [activityLogs, setActivityLogs] = useState([]);
 
   const activities = [
@@ -47,7 +49,7 @@ const LogFarmActivity = () => {
     },
   ];
 
-  const fields = ["feild 1", "field 2"];
+  const fields = ["Field 1", "Field 2", "Field 3", "Field 4", "Field 5"];
   const crops = [
     "Rice",
     "Wheat",
@@ -76,7 +78,12 @@ const LogFarmActivity = () => {
 
   const handleCropSelect = (crop) => {
     setSelectedCrop(crop);
-    setIsDropdownVisible(false);
+    setIsCropDropdownVisible(false);
+  };
+
+  const handleFieldSelect = (field) => {
+    setSelectedField(field);
+    setIsFieldDropdownVisible(false);
   };
 
   const handleSubmit = () => {
@@ -96,10 +103,10 @@ const LogFarmActivity = () => {
       return;
     }
 
-    if (selectedCrop === "Select field") {
+    if (selectedField === "Select Field") {
       Alert.alert(
-        "No field Selected",
-        "Please select a crop before proceeding."
+        "No Field Selected",
+        "Please select a field before proceeding."
       );
       return;
     }
@@ -114,6 +121,7 @@ const LogFarmActivity = () => {
       id: Date.now().toString(),
       activity: selectedActivityName,
       crop: selectedCrop,
+      field: selectedField,
       timestamp: timestamp,
       date: currentDate.toDateString(),
     };
@@ -122,7 +130,7 @@ const LogFarmActivity = () => {
 
     Alert.alert(
       "Activity Logged Successfully!",
-      `Activity: ${selectedActivityName}\nCrop: ${selectedCrop}\nTime: ${timestamp}`,
+      `Activity: ${selectedActivityName}\nField: ${selectedField}\nCrop: ${selectedCrop}\nTime: ${timestamp}`,
       [
         {
           text: "OK",
@@ -130,6 +138,7 @@ const LogFarmActivity = () => {
             // Reset selections after successful submission
             setSelectedActivity(null);
             setSelectedCrop("Select Crop");
+            setSelectedField("Select Field");
             console.log("Farm activity logged:", newLog);
           },
         },
@@ -171,6 +180,7 @@ const LogFarmActivity = () => {
         <Text style={styles.logActivity}>{item.activity}</Text>
         <Text style={styles.logDate}>{item.date}</Text>
       </View>
+      <Text style={styles.logField}>Field: {item.field}</Text>
       <Text style={styles.logCrop}>Crop: {item.crop}</Text>
       <Text style={styles.logTimestamp}>{item.timestamp}</Text>
     </View>
@@ -200,21 +210,21 @@ const LogFarmActivity = () => {
             {activities.map((activity) => renderActivityButton(activity))}
           </View>
 
-          {/* {Field Dropdown} */}
+          {/* Field Dropdown */}
           <View style={styles.dropdownContainer}>
-            <Text style={styles.dropdownLabel}>Select field:</Text>
+            <Text style={styles.dropdownLabel}>Select Field:</Text>
             <TouchableOpacity
               style={styles.dropdown}
-              onPress={() => setIsDropdownVisible(true)}
+              onPress={() => setIsFieldDropdownVisible(true)}
               activeOpacity={0.7}
             >
               <Text
                 style={[
                   styles.dropdownText,
-                  selectedCrop === "Select field" && styles.placeholderText,
+                  selectedField === "Select Field" && styles.placeholderText,
                 ]}
               >
-                {selectedCrop}
+                {selectedField}
               </Text>
               <Text style={styles.dropdownArrow}>▼</Text>
             </TouchableOpacity>
@@ -225,7 +235,7 @@ const LogFarmActivity = () => {
             <Text style={styles.dropdownLabel}>Select Crop:</Text>
             <TouchableOpacity
               style={styles.dropdown}
-              onPress={() => setIsDropdownVisible(true)}
+              onPress={() => setIsCropDropdownVisible(true)}
               activeOpacity={0.7}
             >
               <Text
@@ -244,7 +254,9 @@ const LogFarmActivity = () => {
           <TouchableOpacity
             style={[
               styles.submitButton,
-              (!selectedActivity || selectedCrop === "Select Crop") &&
+              (!selectedActivity || 
+               selectedCrop === "Select Crop" || 
+               selectedField === "Select Field") &&
                 styles.disabledSubmitButton,
             ]}
             onPress={handleSubmit}
@@ -286,35 +298,75 @@ const LogFarmActivity = () => {
         </View>
       )}
 
-      {/* Dropdown Modal */}
+      {/* Field Dropdown Modal */}
       <Modal
-        visible={isDropdownVisible}
+        visible={isFieldDropdownVisible}
         transparent={true}
         animationType="fade"
-        onRequestClose={() => setIsDropdownVisible(false)}
+        onRequestClose={() => setIsFieldDropdownVisible(false)}
       >
         <TouchableOpacity
           style={styles.modalOverlay}
           activeOpacity={1}
-          onPress={() => setIsDropdownVisible(false)}
+          onPress={() => setIsFieldDropdownVisible(false)}
+        >
+          <View style={styles.dropdownModal}>
+            <Text style={styles.modalTitle}>Select Field</Text>
+            <ScrollView style={styles.optionList}>
+              {fields.map((field, index) => (
+                <TouchableOpacity
+                  key={index}
+                  style={[
+                    styles.option,
+                    selectedField === field && styles.selectedOption,
+                  ]}
+                  onPress={() => handleFieldSelect(field)}
+                  activeOpacity={0.7}
+                >
+                  <Text
+                    style={[
+                      styles.optionText,
+                      selectedField === field && styles.selectedOptionText,
+                    ]}
+                  >
+                    {field}
+                  </Text>
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+          </View>
+        </TouchableOpacity>
+      </Modal>
+
+      {/* Crop Dropdown Modal */}
+      <Modal
+        visible={isCropDropdownVisible}
+        transparent={true}
+        animationType="fade"
+        onRequestClose={() => setIsCropDropdownVisible(false)}
+      >
+        <TouchableOpacity
+          style={styles.modalOverlay}
+          activeOpacity={1}
+          onPress={() => setIsCropDropdownVisible(false)}
         >
           <View style={styles.dropdownModal}>
             <Text style={styles.modalTitle}>Select Crop</Text>
-            <ScrollView style={styles.cropList}>
+            <ScrollView style={styles.optionList}>
               {crops.map((crop, index) => (
                 <TouchableOpacity
                   key={index}
                   style={[
-                    styles.cropOption,
-                    selectedCrop === crop && styles.selectedCropOption,
+                    styles.option,
+                    selectedCrop === crop && styles.selectedOption,
                   ]}
                   onPress={() => handleCropSelect(crop)}
                   activeOpacity={0.7}
                 >
                   <Text
                     style={[
-                      styles.cropOptionText,
-                      selectedCrop === crop && styles.selectedCropOptionText,
+                      styles.optionText,
+                      selectedCrop === crop && styles.selectedOptionText,
                     ]}
                   >
                     {crop}
@@ -338,6 +390,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
+    marginTop: '15',
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
@@ -382,7 +435,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-between",
-    marginBottom: -70,
+    marginBottom: 40,
   },
   activityButton: {
     width: "48%",
@@ -509,28 +562,29 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginBottom: 15,
   },
-  cropList: {
+  optionList: {
     maxHeight: 300,
   },
-  cropOption: {
+  option: {
     paddingVertical: 12,
     paddingHorizontal: 15,
     borderBottomWidth: 1,
     borderBottomColor: "#eee",
   },
-  selectedCropOption: {
+  selectedOption: {
     backgroundColor: "#E6F3FF",
   },
-  cropOptionText: {
+  optionText: {
     fontSize: 16,
     color: "#333",
   },
-  selectedCropOptionText: {
+  selectedOptionText: {
     color: "#8B7ED8",
     fontWeight: "600",
   },
   logsContainer: {
-    marginTop: 20,
+    paddingHorizontal: 20,
+    paddingBottom: 20,
   },
   logsTitle: {
     fontSize: 18,
@@ -580,6 +634,11 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "#666",
     fontWeight: "500",
+  },
+  logField: {
+    fontSize: 14,
+    color: "#333",
+    marginBottom: 3,
   },
   logCrop: {
     fontSize: 14,

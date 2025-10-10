@@ -69,8 +69,8 @@ useEffect(() => {
         <View style={styles.weatherContent}>
           <View style={styles.weatherInfo}>
             <View style={styles.locationContainer}>
-              <Text style={styles.locationIcon}>📍</Text>
-              <Text style={styles.locationText}>{currentWeather.location}</Text>
+              <Text style={styles.locationIcon}>📍 </Text>
+              <Text style={styles.locationText}>{currentWeather.location   }</Text>
             </View>
             <Text style={styles.temperature}>
               {currentWeather.temperature}°C
