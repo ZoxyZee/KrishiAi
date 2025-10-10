@@ -47,12 +47,22 @@ export default function Layout() {
           ),
         }}
       />
+      
       <Tabs.Screen
         name="marketprice"
         options={{
           title: "Market Price",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="analytics" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="profilee"
+        options={{
+          title: "profilee",
+          tabBarIcon: ({ color, size }) => (
+             <Ionicons name="person" size={size} color={color} />
           ),
         }}
       />

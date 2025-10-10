@@ -146,7 +146,7 @@ const FarmDashboard = () => {
 
         {/* Recommendations */}
         <View style={styles.recommendationsContainer}>
-          <Text style={styles.sectionTitle}>Recommendations</Text>
+          <Text style={styles.sectionTitle}>Reminders</Text>
           <View style={styles.recommendationsList}>
             {recommendations.map((rec, index) => (
               <View key={index} style={styles.recommendationItem}>

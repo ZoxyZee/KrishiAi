@@ -334,7 +334,7 @@ const PhotoPickerScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Expo Photo Picker</Text>
+        <Text style={styles.title}>Images Add on</Text>
         <Text style={styles.subtitle}>
           Selected: {selectedImages.length} images
         </Text>

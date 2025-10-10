@@ -331,16 +331,16 @@ const LoginRegisterScreen = () => {
       //     password,
       //   }),
       // });
+// commented on 28 for direct transferrr
+      // const response = await axiosInstance.post("/auth/login", {
+      //   phoneNumber,
+      //   password,
+      // });
 
-      const response = await axiosInstance.post("/auth/login", {
-        phoneNumber,
-        password,
-      });
-
-      const data = await response.data.data;
-      console.log(data)
+      // const data = await response.data.data;
+      // console.log(data)
       
-      if (response.status === 200) {
+      if (true) {
         // Store token if needed
         // await AsyncStorage.setItem('token', data.token);
         router.replace("/(tabs)");
@@ -564,7 +564,7 @@ const LoginRegisterScreen = () => {
         {/* Footer */}
         <View style={styles.footer}>
           <Text style={styles.footerText}>
-            By continuing, you agree to our{"\n"}
+            By continuing, {"\n"} you agree to our {}
             <Text style={styles.linkText}>Terms & Privacy Policy</Text>
           </Text>
         </View>
@@ -583,6 +583,7 @@ const styles = StyleSheet.create({
     paddingTop: 30,
   },
   header: {
+    marginTop: '15',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

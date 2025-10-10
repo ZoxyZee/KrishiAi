@@ -366,8 +366,8 @@ const CropCalendarPage = () => {
           </TouchableOpacity>
         </View>
 
-        {/* Crop Selector */}
-        <View style={styles.cropSelector}>
+        {/* Crop Selector yaha crop selection ka h */}
+        {/* <View style={styles.cropSelector}>
           <Text style={styles.selectorTitle}>Select Crop:</Text>
           <View style={styles.cropButtons}>
             {Object.keys(cropData).map((crop) => (
@@ -388,17 +388,17 @@ const CropCalendarPage = () => {
               </TouchableOpacity>
             ))}
           </View>
-        </View>
+        </View> */}
 
         {/* Timeline Section */}
-        <View style={styles.section}>
+        {/* <View style={styles.section}>
           <Text style={styles.sectionTitle}>Crop Timeline Overview</Text>
           <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.timeline}>
             <TimelineCard title="Previous Crop" data={timelineData.previous} type="previous" />
             <TimelineCard title="Current Crop" data={timelineData.current} type="current" />
             <TimelineCard title="Next Recommended" data={timelineData.future} type="future" />
           </ScrollView>
-        </View>
+        </View> */}
 
         {/* Current Crop Quick Info */}
         <View style={styles.section}>

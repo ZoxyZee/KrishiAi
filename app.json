@@ -25,7 +25,7 @@
       "output": "static",
       "favicon": "./assets/images/favicon.png"
     },
-        "plugins": [
+    "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
@@ -46,13 +46,15 @@
           "locationWhenInUsePermission": "This app needs access to location to show weather information for your area."
         }
       ],
-       [
+      [
         "expo-image-picker",
         {
           "photosPermission": "The app accesses your photos to let you select and upload images.",
           "cameraPermission": "The app accesses your camera to let you take photos."
         }
-      ]
+      ],
+      "expo-font",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true,
